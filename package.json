@@ -1,0 +1,20 @@
+{
+  "name": "doploy-interactive",
+  "version": "1.0.0",
+  "description": "Doploy is a Docker-based configuration tool that helps deploy the backend of a web application in a faster and simpler way.",
+  "scripts": {
+    "start": "parcel start index.html --global G",
+    "build": "parcel build index.html --public-url ./ -d build/doploy --global G"
+  },
+  "author": "Alan.Zhufeng Xu",
+  "license": "MIT",
+  "devDependencies": {
+    "less": "^3.9.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.0",
+    "popper.js": "^1.15.0"
+  }
+}

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>Doploy Interactive Tool</title>
+    <meta name="author" content="Zhufeng Xu (Alan)"/>
+    <meta name="robots" content="index,follow"/>
+    <meta name="google" content="index,follow"/>
+    <meta name="googlebot" content="index,follow"/>
+    <meta name="verify" content="index,follow"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text|Open+Sans|Staatliches" rel="stylesheet">
+    <link rel="shortcut icon" href="//s3-us-west-2.amazonaws.com/alansite/resources/favicon.ico" type="image/x-icon"/>
+    <style type="text/less">
+        @import "index";
+    </style>
+</head>
+<body>
+<section id="notification"></section>
+<header class="dark fixed flex-wrp item-center center">
+    <a href="https://alan-zhufengxu.com" target="_blank">
+        <img alt="logo" src="https://c1.staticflickr.com/5/4879/31805591057_a8ccb69402_o.png"/>
+        <div class="ml-s">Doploy Interactive Tool</div>
+    </a>
+</header>
+<main>
+    <section class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10" id="container">
+            <div class="res-steps-container">
+                <div class="res-steps res-step-zero active" data-class=".res-form-zero">
+                    <div class="res-step-bar">0</div>
+                    <div class="res-progress-bar"></div>
+                    <div class="res-progress-title">Introduction</div>
+                </div>
+                <div class="res-steps res-step-one" data-class=".res-form-one">
+                    <div class="res-step-bar">1</div>
+                    <div class="res-progress-bar"></div>
+                    <div class="res-progress-title">Project Type</div>
+                </div>
+                <div class="res-steps res-step-two" data-class=".res-form-two">
+                    <div class="res-step-bar">2</div>
+                    <div class="res-progress-bar"></div>
+                    <div class="res-progress-title">Project Configuration</div>
+                </div>
+                <div class="res-steps res-step-three" data-class=".res-form-three">
+                    <div class="res-step-bar">3</div>
+                    <div class="res-progress-bar"></div>
+                    <div class="res-progress-title">Server Configuration</div>
+                </div>
+                <div class="res-steps res-step-four" data-class=".res-form-four">
+                    <div class="res-step-bar">4</div>
+                    <div class="res-progress-bar"></div>
+                    <div class="res-progress-title">Activation</div>
+                </div>
+            </div>
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="res-step-form res-form-zero">
+                        <div class="text-center mt-m title">Introduction to Doploy</div>
+                        <div class="text-center">Doploy empowers a traditional web-backend code base into a product that
+                            can be deployed to any machine within one step. Technically, Doploy encapsulates a new
+                            Docker Layer into the original project that helps do the one-step deployment. Don't worry,
+                            no extra knowledge is required here. Start now!
+                        </div>
+                        <form class="form-horizontal mt-m">
+                            <div class="form-group">
+                                <div class="flex-wrp item-center content-around">
+                                    <div>
+                                        <div class="block">Backend Framework</div>
+                                        <div class="block">Dependency Management</div>
+                                        <div class="block">Database</div>
+                                        <div class="block">Other Dependencies</div>
+                                    </div>
+                                    <div class="flex-wrp flex-column item-center">
+                                        <b class="text-center text-orange">Doploy <br>Encapsulate</b>
+                                        <div>
+                                            <img width="75"
+                                                 src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDMxLjQ5IDMxLjQ5IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMS40OSAzMS40OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIGQ9Ik0yMS4yMDUsNS4wMDdjLTAuNDI5LTAuNDQ0LTEuMTQzLTAuNDQ0LTEuNTg3LDBjLTAuNDI5LDAuNDI5LTAuNDI5LDEuMTQzLDAsMS41NzFsOC4wNDcsOC4wNDdIMS4xMTEgIEMwLjQ5MiwxNC42MjYsMCwxNS4xMTgsMCwxNS43MzdjMCwwLjYxOSwwLjQ5MiwxLjEyNywxLjExMSwxLjEyN2gyNi41NTRsLTguMDQ3LDguMDMyYy0wLjQyOSwwLjQ0NC0wLjQyOSwxLjE1OSwwLDEuNTg3ICBjMC40NDQsMC40NDQsMS4xNTksMC40NDQsMS41ODcsMGw5Ljk1Mi05Ljk1MmMwLjQ0NC0wLjQyOSwwLjQ0NC0xLjE0MywwLTEuNTcxTDIxLjIwNSw1LjAwN3oiIGZpbGw9IiMwMDAwMDAiLz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=="/>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="block">Backend Framework</div>
+                                        <div class="block">Dependency Management</div>
+                                        <div class="block">Database</div>
+                                        <div class="block">Other Dependencies</div>
+                                        <div class="block bg-orange flex-wrp item-center content-center">
+                                            <img width="20"
+                                                 src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cGF0aCBzdHlsZT0iZmlsbDojMDA2QkMwOyIgZD0iTTUxMiwyNTZjMCwxNDEuMzg1LTExNC42MTUsMjU2LTI1NiwyNTZTMCwzOTcuMzg1LDAsMjU2UzExNC42MTUsMCwyNTYsMCAgYzEzMC40OTcsMCwyMzguMTg0LDk3LjY0NiwyNTMuOTk0LDIyMy44NTljMS4xNDksOS4xMjIsMS44MTgsMTguMzksMS45NjQsMjcuNzg0QzUxMS45OSwyNTMuMDk1LDUxMiwyNTQuNTQ4LDUxMiwyNTZ6Ii8+CjxnPgoJPHBhdGggc3R5bGU9ImZpbGw6I0YyRjJGMjsiIGQ9Ik01MTEuOTU4LDI1MS42NDNjLTIxLjg1OSwyNi42MjQtNjQuNjksMjQuNTQ1LTY0LjY5LDI0LjU0NSAgIGMtMjYuNDE1LDExMy44LTE4NS45NCwxNzEuNzE5LTI5Ni42OTksMTQzLjI2NkMzOS44MjEsMzkxLjAxMSw1NS4wNTYsMjU4LjkxNSw1NS4wNTYsMjU4LjkxNWgzMjQuMTM4ICAgYzI2Ljc0OSwwLDI4Ljc4Ny04LjEyOSwyOC43ODctOC4xMjljLTIzLjcwOS01Ni4yMjYsMTIuODczLTg2LjM3MSwxMi44NzMtODYuMzcxYzI4LjQ1Myw1LjA4OSwzNS41NTgsNTMuODU0LDM1LjU1OCw1My44NTQgICBjMjMuMzUzLTQuMTksNDIuMTA5LDAuNzk0LDUzLjU4Miw1LjU5QzUxMS4xNDMsMjMyLjk4MSw1MTEuODEyLDI0Mi4yNDksNTExLjk1OCwyNTEuNjQzeiIvPgoJPHJlY3QgeD0iODkuNiIgeT0iMjA3LjQzMyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgoJPHJlY3QgeD0iMTQ2LjY0MSIgeT0iMjA3LjQzMyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgoJPHJlY3QgeD0iMzE3Ljc0MyIgeT0iMjA3LjQzMyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgoJPHJlY3QgeD0iMjYwLjcxMiIgeT0iMjA3LjQzMyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgoJPHJlY3QgeD0iMjYwLjcxMiIgeT0iMTAxLjc2MyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgoJPHJlY3QgeD0iMjAzLjY3MSIgeT0iMjA3LjQzMyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgoJPHJlY3QgeD0iMTQ2LjY0MSIgeT0iMTU0LjU5MyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgoJPHJlY3QgeD0iMjYwLjcxMiIgeT0iMTU0LjU5MyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgoJPHJlY3QgeD0iMjAzLjY3MSIgeT0iMTU0LjU5MyIgc3R5bGU9ImZpbGw6I0YyRjJGMjsiIHdpZHRoPSI0NS4zOSIgaGVpZ2h0PSI0MS4zMiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
+                                            <span class="ml-s">Docker Layer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-m">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-default col-xs-offset-1 res-btn-orange"
+                                            data-class=".res-form-zero">Start
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="res-step-form res-form-one">
+                        <div class="text-center mt-m title">Choose Project Type</div>
+                        <form class="form-horizontal mt-m">
+                            <div class="form-group">
+                                <div class="flex-wrp item-center content-around">
+                                    <div class="flex-wrp flex-column item-center">
+                                        <div class="btn starter-item flex-wrp flex-column item-center bg-green res-btn-orange"
+                                             data-class=".res-form-one">
+                                            <img width="50" height="50" src="data:image/svg+xml;base64,
+                            PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjguMDQ3IDI4LjA0NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjguMDQ3IDI4LjA0NzsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48Zz48Zz4KCTxwYXRoIGQ9Ik0yNS44MTgsMC40MzNIMi4yMzFDMC45OTgsMC40MzMsMCwxLjQ1MSwwLDIuNjk5djIyLjY1NGMwLDEuMjUsMC45OTgsMi4yNjIsMi4yMzEsMi4yNjJoMjMuNTg3ICAgYzEuMjMsMCwyLjIyOS0xLjAxMiwyLjIyOS0yLjI2MlYyLjY5OUMyOC4wNDgsMS40NTEsMjcuMDQ5LDAuNDMzLDI1LjgxOCwwLjQzM3ogTTMuNjQ0LDIuMDZoMjAuNzYzICAgYzEuMDgzLDAsMS45NjMsMC44OTUsMS45NjMsMS45OTRWOC41NEgxLjY4VjQuMDU0QzEuNjgsMi45NTQsMi41NTYsMi4wNiwzLjY0NCwyLjA2eiBNOS42NjgsMTAuNzk2SDI2LjM3djUuOTgySDkuNjY4VjEwLjc5NnogICAgTTEuNjgsMjMuOTk1VjEwLjc5Nmg1LjgxMnYxNS4xOTNIMy42NDRDMi41NTYsMjUuOTksMS42OCwyNS4wOTcsMS42OCwyMy45OTV6IE0yNC40MDcsMjUuOTlIOS42Njh2LTYuOTU3SDI2LjM3djQuOTYzICAgQzI2LjM3LDI1LjA5NywyNS40OSwyNS45OSwyNC40MDcsMjUuOTl6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjMDAwMDAwIj48L3BhdGg+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+CjwvZz48L2c+IDwvc3ZnPg=="/>
+                                            <div class="text-center mt-s">
+                                                <span>Start From</span><br>
+                                                <b style="font-size: 1.4em">Standard Template</b>
+                                            </div>
+                                        </div>
+                                        <div class="mt-s text-center" style="max-width:65%">
+                                            Start a new project using our templates with the
+                                            configurations you need and with an one-step deploy feature.
+                                        </div>
+                                    </div>
+                                    <div class="flex-wrp flex-column item-center">
+                                        <div class="btn starter-item flex-wrp flex-column item-center bg-orange res-btn-orange"
+                                             data-class=".res-form-one">
+                                            <img width="50" height="50" src="data:image/svg+xml;base64,
+                            PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMiIgY2xhc3M9IiI+PGc+PHBhdGggZD0ibTQ0LjI1NzgxMiAxMzYuNjUyMzQ0aDE0LjUxMTcxOWM0LjE0NDUzMSAwIDcuNS0zLjM1NTQ2OSA3LjUtNy41IDAtNC4xNDQ1MzItMy4zNTU0NjktNy41LTcuNS03LjVoLTE0LjUxMTcxOWMtNC4xNDQ1MzEgMC03LjUwMzkwNiAzLjM1NTQ2OC03LjUwMzkwNiA3LjUgMCA0LjE0NDUzMSAzLjM1OTM3NSA3LjUgNy41MDM5MDYgNy41em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtNDQuMjU3ODEyIDE3NC4xNTYyNWgxNC41MTE3MTljNC4xNDQ1MzEgMCA3LjUtMy4zNTU0NjkgNy41LTcuNXMtMy4zNTU0NjktNy41LTcuNS03LjVoLTE0LjUxMTcxOWMtNC4xNDQ1MzEgMC03LjUwMzkwNiAzLjM1NTQ2OS03LjUwMzkwNiA3LjVzMy4zNTkzNzUgNy41IDcuNTAzOTA2IDcuNXptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTQ0LjI1NzgxMiAyMTEuNjY0MDYyaDE0LjUxMTcxOWM0LjE0NDUzMSAwIDcuNS0zLjM1OTM3NCA3LjUtNy41MDM5MDYgMC00LjE0NDUzMS0zLjM1NTQ2OS03LjUtNy41LTcuNWgtMTQuNTExNzE5Yy00LjE0NDUzMSAwLTcuNTAzOTA2IDMuMzU1NDY5LTcuNTAzOTA2IDcuNSAwIDQuMTQ0NTMyIDMuMzU5Mzc1IDcuNTAzOTA2IDcuNTAzOTA2IDcuNTAzOTA2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtNDQuMjU3ODEyIDI0OS4xNjc5NjloMTQuNTExNzE5YzQuMTQ0NTMxIDAgNy41LTMuMzU5Mzc1IDcuNS03LjUwMzkwNyAwLTQuMTQwNjI0LTMuMzU1NDY5LTcuNS03LjUtNy41aC0xNC41MTE3MTljLTQuMTQ0NTMxIDAtNy41MDM5MDYgMy4zNTkzNzYtNy41MDM5MDYgNy41IDAgNC4xNDQ1MzIgMy4zNTkzNzUgNy41MDM5MDcgNy41MDM5MDYgNy41MDM5MDd6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im00NC4yNTc4MTIgMjg2LjY3MTg3NWgxNC41MTE3MTljNC4xNDQ1MzEgMCA3LjUtMy4zNTkzNzUgNy41LTcuNSAwLTQuMTQ0NTMxLTMuMzU1NDY5LTcuNTAzOTA2LTcuNS03LjUwMzkwNmgtMTQuNTExNzE5Yy00LjE0NDUzMSAwLTcuNTAzOTA2IDMuMzU5Mzc1LTcuNTAzOTA2IDcuNTAzOTA2IDAgNC4xNDA2MjUgMy4zNTkzNzUgNy41IDcuNTAzOTA2IDcuNXptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTQ0LjI1NzgxMiAzMjQuMTc1NzgxaDE0LjUxMTcxOWM0LjE0NDUzMSAwIDcuNS0zLjM1NTQ2OSA3LjUtNy41cy0zLjM1NTQ2OS03LjUtNy41LTcuNWgtMTQuNTExNzE5Yy00LjE0NDUzMSAwLTcuNTAzOTA2IDMuMzU1NDY5LTcuNTAzOTA2IDcuNXMzLjM1OTM3NSA3LjUgNy41MDM5MDYgNy41em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtNDQuMjU3ODEyIDM2MS42ODM1OTRoMTQuNTExNzE5YzQuMTQ0NTMxIDAgNy41LTMuMzU5Mzc1IDcuNS03LjUwMzkwNiAwLTQuMTQwNjI2LTMuMzU1NDY5LTcuNS03LjUtNy41aC0xNC41MTE3MTljLTQuMTQ0NTMxIDAtNy41MDM5MDYgMy4zNTkzNzQtNy41MDM5MDYgNy41IDAgNC4xNDQ1MzEgMy4zNTkzNzUgNy41MDM5MDYgNy41MDM5MDYgNy41MDM5MDZ6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im00NC4yNTc4MTIgMzk5LjE4NzVoMTQuNTExNzE5YzQuMTQ0NTMxIDAgNy41LTMuMzU5Mzc1IDcuNS03LjUgMC00LjE0NDUzMS0zLjM1NTQ2OS03LjUwMzkwNi03LjUtNy41MDM5MDZoLTE0LjUxMTcxOWMtNC4xNDQ1MzEgMC03LjUwMzkwNiAzLjM1OTM3NS03LjUwMzkwNiA3LjUwMzkwNiAwIDQuMTQwNjI1IDMuMzU5Mzc1IDcuNSA3LjUwMzkwNiA3LjV6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im00NC4yNTc4MTIgNDM2LjY5MTQwNmgxNC41MTE3MTljNC4xNDQ1MzEgMCA3LjUtMy4zNTU0NjggNy41LTcuNSAwLTQuMTQ0NTMxLTMuMzU1NDY5LTcuNTAzOTA2LTcuNS03LjUwMzkwNmgtMTQuNTExNzE5Yy00LjE0NDUzMSAwLTcuNTAzOTA2IDMuMzU5Mzc1LTcuNTAzOTA2IDcuNTAzOTA2IDAgNC4xNDQ1MzIgMy4zNTkzNzUgNy41IDcuNTAzOTA2IDcuNXptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTQ0LjI1NzgxMiA0NzQuMTk1MzEyaDE0LjUxMTcxOWM0LjE0NDUzMSAwIDcuNS0zLjM1NTQ2OCA3LjUtNy41IDAtNC4xNDQ1MzEtMy4zNTU0NjktNy41LTcuNS03LjVoLTE0LjUxMTcxOWMtNC4xNDQ1MzEgMC03LjUwMzkwNiAzLjM1NTQ2OS03LjUwMzkwNiA3LjUgMCA0LjE0NDUzMiAzLjM1OTM3NSA3LjUgNy41MDM5MDYgNy41em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtODUuNzkyOTY5IDEzNi42NTIzNDRoNzAuNTU4NTkzYzQuMTQ0NTMyIDAgNy41LTMuMzU1NDY5IDcuNS03LjUgMC00LjE0NDUzMi0zLjM1NTQ2OC03LjUtNy41LTcuNWgtNzAuNTU4NTkzYy00LjE0NDUzMSAwLTcuNTAzOTA3IDMuMzU1NDY4LTcuNTAzOTA3IDcuNSAwIDQuMTQ0NTMxIDMuMzU5Mzc2IDcuNSA3LjUwMzkwNyA3LjV6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im04NS43OTI5NjkgMjg2LjY3MTg3NWg3MC41NTg1OTNjNC4xNDQ1MzIgMCA3LjUtMy4zNTkzNzUgNy41LTcuNSAwLTQuMTQ0NTMxLTMuMzU1NDY4LTcuNTAzOTA2LTcuNS03LjUwMzkwNmgtNzAuNTU4NTkzYy00LjE0NDUzMSAwLTcuNTAzOTA3IDMuMzU5Mzc1LTcuNTAzOTA3IDcuNTAzOTA2IDAgNC4xNDA2MjUgMy4zNTkzNzYgNy41IDcuNTAzOTA3IDcuNXptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTg1Ljc5Mjk2OSAzNjEuNjgzNTk0aDcwLjU1ODU5M2M0LjE0NDUzMiAwIDcuNS0zLjM1OTM3NSA3LjUtNy41MDM5MDYgMC00LjE0MDYyNi0zLjM1NTQ2OC03LjUtNy41LTcuNWgtNzAuNTU4NTkzYy00LjE0NDUzMSAwLTcuNTAzOTA3IDMuMzU5Mzc0LTcuNTAzOTA3IDcuNSAwIDQuMTQ0NTMxIDMuMzU5Mzc2IDcuNTAzOTA2IDcuNTAzOTA3IDcuNTAzOTA2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtODUuNzkyOTY5IDE3NC4xNTYyNWgzOS41MzUxNTZjNC4xNDQ1MzEgMCA3LjUtMy4zNTU0NjkgNy41LTcuNXMtMy4zNTU0NjktNy41LTcuNS03LjVoLTM5LjUzNTE1NmMtNC4xNDQ1MzEgMC03LjUwMzkwNyAzLjM1NTQ2OS03LjUwMzkwNyA3LjVzMy4zNTkzNzYgNy41IDcuNTAzOTA3IDcuNXptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTg1Ljc5Mjk2OSAyMTEuNjY0MDYyaDM5LjUzNTE1NmM0LjE0NDUzMSAwIDcuNS0zLjM1OTM3NCA3LjUtNy41MDM5MDYgMC00LjE0NDUzMS0zLjM1NTQ2OS03LjUtNy41LTcuNWgtMzkuNTM1MTU2Yy00LjE0NDUzMSAwLTcuNTAzOTA3IDMuMzU1NDY5LTcuNTAzOTA3IDcuNSAwIDQuMTQ0NTMyIDMuMzU5Mzc2IDcuNTAzOTA2IDcuNTAzOTA3IDcuNTAzOTA2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtODUuNzkyOTY5IDQ3NC4xOTUzMTJoMzkuNTM1MTU2YzQuMTQ0NTMxIDAgNy41LTMuMzU1NDY4IDcuNS03LjUgMC00LjE0NDUzMS0zLjM1NTQ2OS03LjUtNy41LTcuNWgtMzkuNTM1MTU2Yy00LjE0NDUzMSAwLTcuNTAzOTA3IDMuMzU1NDY5LTcuNTAzOTA3IDcuNSAwIDQuMTQ0NTMyIDMuMzU5Mzc2IDcuNSA3LjUwMzkwNyA3LjV6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im04NS43OTI5NjkgMzI0LjE3NTc4MWgxOS43Njk1MzFjNC4xNDA2MjUgMCA3LjUtMy4zNTU0NjkgNy41LTcuNXMtMy4zNTkzNzUtNy41LTcuNS03LjVoLTE5Ljc2OTUzMWMtNC4xNDQ1MzEgMC03LjUwMzkwNyAzLjM1NTQ2OS03LjUwMzkwNyA3LjVzMy4zNTkzNzYgNy41IDcuNTAzOTA3IDcuNXptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTg1Ljc5Mjk2OSAyNDkuMTY3OTY5aDU4LjI1YzQuMTQwNjI1IDAgNy41LTMuMzU5Mzc1IDcuNS03LjUwMzkwNyAwLTQuMTQwNjI0LTMuMzU5Mzc1LTcuNS03LjUtNy41aC01OC4yNWMtNC4xNDQ1MzEgMC03LjUwMzkwNyAzLjM1OTM3Ni03LjUwMzkwNyA3LjUgMCA0LjE0NDUzMiAzLjM1OTM3NiA3LjUwMzkwNyA3LjUwMzkwNyA3LjUwMzkwN3ptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTg1Ljc5Mjk2OSAzOTkuMTg3NWg1OC4yNWM0LjE0MDYyNSAwIDcuNS0zLjM1OTM3NSA3LjUtNy41IDAtNC4xNDQ1MzEtMy4zNTkzNzUtNy41MDM5MDYtNy41LTcuNTAzOTA2aC01OC4yNWMtNC4xNDQ1MzEgMC03LjUwMzkwNyAzLjM1OTM3NS03LjUwMzkwNyA3LjUwMzkwNiAwIDQuMTQwNjI1IDMuMzU5Mzc2IDcuNSA3LjUwMzkwNyA3LjV6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im04NS43OTI5NjkgNDM2LjY5MTQwNmg1OC4yNWM0LjE0MDYyNSAwIDcuNS0zLjM1NTQ2OCA3LjUtNy41IDAtNC4xNDQ1MzEtMy4zNTkzNzUtNy41MDM5MDYtNy41LTcuNTAzOTA2aC01OC4yNWMtNC4xNDQ1MzEgMC03LjUwMzkwNyAzLjM1OTM3NS03LjUwMzkwNyA3LjUwMzkwNiAwIDQuMTQ0NTMyIDMuMzU5Mzc2IDcuNSA3LjUwMzkwNyA3LjV6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im01NC43Njk1MzEgMjguNzkyOTY5Yy0xMi4xNDA2MjUgMC0yMi4wMTU2MjUgOS44NzUtMjIuMDE1NjI1IDIyLjAxNTYyNSAwIDEyLjEzNjcxOCA5Ljg3NSAyMi4wMTE3MTggMjIuMDE1NjI1IDIyLjAxMTcxOCAxMi4xMzY3MTkgMCAyMi4wMTE3MTktOS44NzUgMjIuMDExNzE5LTIyLjAxMTcxOCAwLTEyLjE0MDYyNS05Ljg3NS0yMi4wMTU2MjUtMjIuMDExNzE5LTIyLjAxNTYyNXptMCAyOS4wMjM0MzdjLTMuODY3MTg3IDAtNy4wMTE3MTktMy4xNDQ1MzEtNy4wMTE3MTktNy4wMDc4MTIgMC0zLjg2NzE4OCAzLjE0NDUzMi03LjAxMTcxOSA3LjAxMTcxOS03LjAxMTcxOSAzLjg2MzI4MSAwIDcuMDExNzE5IDMuMTQ0NTMxIDcuMDExNzE5IDcuMDExNzE5IDAgMy44NjMyODEtMy4xNDg0MzggNy4wMDc4MTItNy4wMTE3MTkgNy4wMDc4MTJ6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im0xMTAuODE2NDA2IDI4Ljc5Mjk2OWMtMTIuMTQwNjI1IDAtMjIuMDExNzE4IDkuODc1LTIyLjAxMTcxOCAyMi4wMTU2MjUgMCAxMi4xMzY3MTggOS44NzUgMjIuMDExNzE4IDIyLjAxMTcxOCAyMi4wMTE3MTggMTIuMTM2NzE5IDAgMjIuMDExNzE5LTkuODc1IDIyLjAxMTcxOS0yMi4wMTE3MTggMC0xMi4xNDA2MjUtOS44NzUtMjIuMDE1NjI1LTIyLjAxMTcxOS0yMi4wMTU2MjV6bTAgMjkuMDIzNDM3Yy0zLjg2NzE4NyAwLTcuMDExNzE4LTMuMTQ0NTMxLTcuMDExNzE4LTcuMDA3ODEyIDAtMy44NjcxODggMy4xNDQ1MzEtNy4wMTE3MTkgNy4wMTE3MTgtNy4wMTE3MTkgMy44NjMyODIgMCA3LjAxMTcxOSAzLjE0NDUzMSA3LjAxMTcxOSA3LjAxMTcxOSAwIDMuODYzMjgxLTMuMTQ4NDM3IDcuMDA3ODEyLTcuMDExNzE5IDcuMDA3ODEyem0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtMTY2Ljg2MzI4MSAyOC43OTI5NjljLTEyLjE0MDYyNSAwLTIyLjAxNTYyNSA5Ljg3NS0yMi4wMTU2MjUgMjIuMDE1NjI1IDAgMTIuMTM2NzE4IDkuODc1IDIyLjAxMTcxOCAyMi4wMTU2MjUgMjIuMDExNzE4IDEyLjEzNjcxOSAwIDIyLjAxMTcxOS05Ljg3NSAyMi4wMTE3MTktMjIuMDExNzE4IDAtMTIuMTQwNjI1LTkuODc1LTIyLjAxNTYyNS0yMi4wMTE3MTktMjIuMDE1NjI1em0wIDI5LjAyMzQzN2MtMy44NjcxODcgMC03LjAxMTcxOS0zLjE0NDUzMS03LjAxMTcxOS03LjAwNzgxMiAwLTMuODY3MTg4IDMuMTQ0NTMyLTcuMDExNzE5IDcuMDExNzE5LTcuMDExNzE5IDMuODYzMjgxIDAgNy4wMTE3MTkgMy4xNDQ1MzEgNy4wMTE3MTkgNy4wMTE3MTkgMCAzLjg2MzI4MS0zLjE0NDUzMSA3LjAwNzgxMi03LjAxMTcxOSA3LjAwNzgxMnptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTI1OC42NjAxNTYgMjY1LjQzNzVoMTg0LjgxNjQwNmMxMC42ODM1OTQgMCAxOS4zNzEwOTQtOC42OTE0MDYgMTkuMzcxMDk0LTE5LjM3MTA5NHYtMTA1LjA0Mjk2OGMwLTEwLjY4MzU5NC04LjY4NzUtMTkuMzcxMDk0LTE5LjM3MTA5NC0xOS4zNzEwOTRoLTE4NC44MTY0MDZjLTEwLjY4MzU5NCAwLTE5LjM3MTA5NCA4LjY4NzUtMTkuMzcxMDk0IDE5LjM3MTA5NHYxMDUuMDQyOTY4YzAgMTAuNjc5Njg4IDguNjg3NSAxOS4zNzEwOTQgMTkuMzcxMDk0IDE5LjM3MTA5NHptLTQuMzcxMDk0LTEyNC40MTQwNjJjMC0yLjQxMDE1NyAxLjk2MDkzOC00LjM3MTA5NCA0LjM3MTA5NC00LjM3MTA5NGgxODQuODE2NDA2YzIuNDEwMTU3IDAgNC4zNjcxODggMS45NjA5MzcgNC4zNjcxODggNC4zNzEwOTR2MTA1LjA0Mjk2OGMwIDIuNDA2MjUtMS45NTcwMzEgNC4zNjcxODgtNC4zNjcxODggNC4zNjcxODhoLTE4NC44MTY0MDZjLTIuNDEwMTU2IDAtNC4zNzEwOTQtMS45NjA5MzgtNC4zNzEwOTQtNC4zNjcxODh6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im0yNDYuNzg5MDYyIDI5Mi41ODIwMzFoMTE4LjU2MjVjNC4xNDQ1MzIgMCA3LjUwMzkwNy0zLjM1OTM3NSA3LjUwMzkwNy03LjUwMzkwNiAwLTQuMTQwNjI1LTMuMzU5Mzc1LTcuNS03LjUwMzkwNy03LjVoLTExOC41NjI1Yy00LjE0NDUzMSAwLTcuNSAzLjM1OTM3NS03LjUgNy41IDAgNC4xNDQ1MzEgMy4zNTU0NjkgNy41MDM5MDYgNy41IDcuNTAzOTA2em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtNDA1LjM1MTU2MiAyNzcuNTc4MTI1Yy00LjE0NDUzMSAwLTcuNSAzLjM1OTM3NS03LjUgNy41IDAgNC4xNDQ1MzEgMy4zNTU0NjkgNy41MDM5MDYgNy41IDcuNTAzOTA2aDQ5Ljk5NjA5NGM0LjE0NDUzMiAwIDcuNS0zLjM1OTM3NSA3LjUtNy41MDM5MDYgMC00LjE0MDYyNS0zLjM1NTQ2OC03LjUtNy41LTcuNXptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjRkRGQkZCIj48L3BhdGg+PHBhdGggZD0ibTI1OC42NjAxNTYgNDQ3LjA1MDc4MWgxODQuODE2NDA2YzEwLjY4MzU5NCAwIDE5LjM3MTA5NC04LjY4NzUgMTkuMzcxMDk0LTE5LjM3MTA5M3YtMTA1LjA0Mjk2OWMwLTEwLjY3OTY4OC04LjY4NzUtMTkuMzcxMDk0LTE5LjM3MTA5NC0xOS4zNzEwOTRoLTE4NC44MTY0MDZjLTEwLjY4MzU5NCAwLTE5LjM3MTA5NCA4LjY5MTQwNi0xOS4zNzEwOTQgMTkuMzcxMDk0djM0LjM4MjgxMmMwIDQuMTQ0NTMxIDMuMzU1NDY5IDcuNSA3LjUgNy41IDQuMTQwNjI2IDAgNy41LTMuMzU1NDY5IDcuNS03LjV2LTM0LjM4MjgxMmMwLTIuNDEwMTU3IDEuOTYwOTM4LTQuMzY3MTg4IDQuMzcxMDk0LTQuMzY3MTg4aDE4NC44MTY0MDZjMi40MTAxNTcgMCA0LjM2NzE4OCAxLjk1NzAzMSA0LjM2NzE4OCA0LjM2NzE4OHYxMDUuMDQyOTY5YzAgMi40MTAxNTYtMS45NTcwMzEgNC4zNjcxODctNC4zNjcxODggNC4zNjcxODdoLTE4NC44MTY0MDZjLTIuNDEwMTU2IDAtNC4zNzEwOTQtMS45NTcwMzEtNC4zNzEwOTQtNC4zNjcxODd2LTI1LjY1NjI1YzAtNC4xNDQ1MzItMy4zNTkzNzQtNy41LTcuNS03LjUtNC4xNDQ1MzEgMC03LjUgMy4zNTU0NjgtNy41IDcuNXYyNS42NTYyNWMwIDEwLjY3OTY4NyA4LjY4NzUgMTkuMzcxMDkzIDE5LjM3MTA5NCAxOS4zNzEwOTN6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjxwYXRoIGQ9Im0yNDYuNzg5MDYyIDQ3NC4xOTUzMTJoMTE4LjU2MjVjNC4xNDQ1MzIgMCA3LjUwMzkwNy0zLjM1NTQ2OCA3LjUwMzkwNy03LjUgMC00LjE0NDUzMS0zLjM1OTM3NS03LjUtNy41MDM5MDctNy41aC0xMTguNTYyNWMtNC4xNDQ1MzEgMC03LjUgMy4zNTU0NjktNy41IDcuNSAwIDQuMTQ0NTMyIDMuMzU1NDY5IDcuNSA3LjUgNy41em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtNDU1LjM0NzY1NiA0NTkuMTk1MzEyaC00OS45OTYwOTRjLTQuMTQ0NTMxIDAtNy41IDMuMzU1NDY5LTcuNSA3LjUgMCA0LjE0NDUzMiAzLjM1NTQ2OSA3LjUgNy41IDcuNWg0OS45OTYwOTRjNC4xNDQ1MzIgMCA3LjUtMy4zNTU0NjggNy41LTcuNSAwLTQuMTQ0NTMxLTMuMzU1NDY4LTcuNS03LjUtNy41em0wIDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGREZCRkIiPjwvcGF0aD48cGF0aCBkPSJtNDc4Ljk4ODI4MSAwaC00NDUuOTc2NTYyYy0xOC4yMDMxMjUgMC0zMy4wMTE3MTkgMTQuODA4NTk0LTMzLjAxMTcxOSAzMy4wMTE3MTl2MTM4LjU2NjQwNmMwIDQuMTQ0NTMxIDMuMzU5Mzc1IDcuNSA3LjUgNy41IDQuMTQ0NTMxIDAgNy41MDM5MDYtMy4zNTU0NjkgNy41MDM5MDYtNy41di02OS41MzkwNjNoMTcyLjU0Mjk2OXYzOTQuOTYwOTM4aC0xNTQuNTM1MTU2Yy05LjkyOTY4OCAwLTE4LjAwNzgxMy04LjA4MjAzMS0xOC4wMDc4MTMtMTguMDExNzE5di0yNjMuNTUwNzgxYzAtNC4xNDQ1MzEtMy4zNTkzNzUtNy41LTcuNTAzOTA2LTcuNS00LjE0MDYyNSAwLTcuNSAzLjM1NTQ2OS03LjUgNy41djI2My41NDY4NzVjMCAxOC4yMDMxMjUgMTQuODA4NTk0IDMzLjAxNTYyNSAzMy4wMTE3MTkgMzMuMDE1NjI1aDQ0NS45NzY1NjJjMTguMjAzMTI1IDAgMzMuMDExNzE5LTE0LjgxMjUgMzMuMDExNzE5LTMzLjAxNTYyNXYtNDQ1Ljk3MjY1NmMwLTE4LjIwMzEyNS0xNC44MDg1OTQtMzMuMDExNzE5LTMzLjAxMTcxOS0zMy4wMTE3MTl6bTE4LjAwNzgxMyA0NzguOTg0Mzc1YzAgOS45MzM1OTQtOC4wNzgxMjUgMTguMDExNzE5LTE4LjAwNzgxMyAxOC4wMTE3MTloLTI3Ni40Mzc1di0zOTQuOTU3MDMyaDI5NC40NDkyMTl2Mzc2Ljk0NTMxM3ptMC0zOTEuOTQ5MjE5aC00ODEuOTkyMTg4di01NC4wMjM0MzdjMC05LjkyOTY4OCA4LjA3ODEyNS0xOC4wMDc4MTMgMTguMDA3ODEzLTE4LjAwNzgxM2g0NDUuOTc2NTYyYzkuOTI5Njg4IDAgMTguMDA3ODEzIDguMDc4MTI1IDE4LjAwNzgxMyAxOC4wMDc4MTN6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iI0ZERkJGQiI+PC9wYXRoPjwvZz4gPC9zdmc+"/>
+                                            <div class="text-center mt-s">
+                                                <span>Start From</span><br>
+                                                <b style="font-size: 1.4em">Customized Project</b>
+                                            </div>
+                                        </div>
+                                        <div class="mt-s text-center" style="max-width:65%">
+                                            You've already built something. Now you want to add the one-step deploy
+                                            feature with the help of Doploy.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-m">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-default btn bg-gray res-btn-gray"
+                                            data-class=".res-form-one">Back
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="res-step-form res-form-two">
+                        <div class="text-center mt-m title">Configure Your Project</div>
+                        <form class="form-horizontal mt-m">
+                            <div class="form-group">
+                                <div id="framework-expand"
+                                     class="flex-wrp item-center content-between clickable expand">
+                                    <div class="flex-wrp">
+                                        <label class="form-label"><b>1. <span class="hl">*</span>Configure Your
+                                            Framework</b></label>
+                                        <div class="ml-s"> -</div>
+                                        <div id="selected-framework" class="expand-selected ml-s">
+                                            Flask(Python)
+                                        </div>
+                                        <div class="ml-s">Selected</div>
+                                    </div>
+                                    <img width="20"
+                                         src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDI4NC45MjkgMjg0LjkyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjg0LjkyOSAyODQuOTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Mi4wODIsMTk1LjI4NUwxNDkuMDI4LDYyLjI0Yy0xLjkwMS0xLjkwMy00LjA4OC0yLjg1Ni02LjU2Mi0yLjg1NnMtNC42NjUsMC45NTMtNi41NjcsMi44NTZMMi44NTYsMTk1LjI4NSAgIEMwLjk1LDE5Ny4xOTEsMCwxOTkuMzc4LDAsMjAxLjg1M2MwLDIuNDc0LDAuOTUzLDQuNjY0LDIuODU2LDYuNTY2bDE0LjI3MiwxNC4yNzFjMS45MDMsMS45MDMsNC4wOTMsMi44NTQsNi41NjcsMi44NTQgICBjMi40NzQsMCw0LjY2NC0wLjk1MSw2LjU2Ny0yLjg1NGwxMTIuMjA0LTExMi4yMDJsMTEyLjIwOCwxMTIuMjA5YzEuOTAyLDEuOTAzLDQuMDkzLDIuODQ4LDYuNTYzLDIuODQ4ICAgYzIuNDc4LDAsNC42NjgtMC45NTEsNi41Ny0yLjg0OGwxNC4yNzQtMTQuMjc3YzEuOTAyLTEuOTAyLDIuODQ3LTQuMDkzLDIuODQ3LTYuNTY2ICAgQzI4NC45MjksMTk5LjM3OCwyODMuOTg0LDE5Ny4xODgsMjgyLjA4MiwxOTUuMjg1eiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
+                                </div>
+                                <div class="detail-config framework-config">
+                                    <div id="framework-list" class="flex-wrp item-center">
+                                        <div class="radio-btn-container">
+                                            <input onchange="G.updateFramework(this)" type="radio" value="flask"
+                                                   name="framework" checked/>
+                                            <b class="radio-btn flex-wrp item-center content-center">
+                                                Flask(Python)
+                                            </b>
+                                        </div>
+                                        <div class="radio-btn-container ml-s">
+                                            <input onchange="G.updateFramework(this)" type="radio" value="express"
+                                                   name="framework"/>
+                                            <b class="radio-btn flex-wrp item-center content-center">
+                                                Express(NodeJS)
+                                            </b>
+                                        </div>
+                                        <div class="radio-btn-container ml-s">
+                                            <input onchange="G.updateFramework(this)" type="radio" value="springboot"
+                                                   name="framework"/>
+                                            <b class="radio-btn flex-wrp item-center content-center">
+                                                Springboot(Java)
+                                            </b>
+                                        </div>
+                                    </div>
+                                    <div id="framework-detail" class="flex-wrp item-center mt-s customize">
+                                        <div id="port">
+                                            <label class="form-label"><b><span class="hl">*</span>Expose Port</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="When accessing through the internet, your website url is in the form of
+                                          'http://ip:port'. Choose which port you want to expose to the outside world.
+                                          Note that you will also need to modify the corresponding port access in the
+                                          firewall configuration">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="port-input" class="form-input" type="number" value="8080"/>
+                                            </div>
+                                        </div>
+                                        <div id="entry" class="ml-s flask express">
+                                            <label class="form-label"><b><span class="hl">*</span>Entry File Path</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="The main file for your framework to start. For Flask, it's the file with
+                                          the '__main__' function. For Express, it's the 'index.js'. Remember to include the whole path if there's a multi-level structure.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="entry-input" class="form-input" type="text"
+                                                       value="dir/app.py"/>
+                                            </div>
+                                        </div>
+                                        <div id="artifactid" class="springboot ml-s hidden">
+                                            <label class="form-label"><b><span class="hl">*</span>artifactId</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="It resides in your maven configuration file, 'pom.xml'.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="artifact-input" class="form-input" type="text"
+                                                       value="Doploy"/>
+                                            </div>
+                                        </div>
+                                        <div id="version" class="ml-s springboot hidden">
+                                            <label class="form-label"><b><span class="hl">*</span>version</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="It resides in your maven configuration file, 'pom.xml'.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="version-input" class="form-input" type="text"
+                                                       value="1.0-SNAPSHOT"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="dependencies" class="mt-s flask customize">
+                                        <label class="form-label"><b>Dependencies</b>
+                                            <span class="popup" data-toggle="tooltip"
+                                                  data-placement="top"
+                                                  title="Declare names of any external dependency packages in your python files. Input the names with a blank in between as the separator(Flask and database related dependencies are already built in)">
+                                        ?
+                                    </span>
+                                        </label>
+                                        <div>
+                                            <textarea id="dependencies-input" class="form-input" style="width: 100%;"
+                                                      type="text"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group mt-s">
+                                <div class="customize">
+                                    <div class="flex-wrp item-center content-between no-database expand" hidden>
+                                        <label class="form-label"><b>No Database Required</b></label>
+                                        <div>
+                                            <span>Add Database</span>
+                                            <div class="btn add-btn ml-s">+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="database-expand"
+                                     class="flex-wrp item-center content-between has-database expand clickable">
+                                    <div class="flex-wrp">
+                                        <label class="form-label"><b>2. <span class="hl">*</span>Configure Your
+                                            Database</b></label>
+                                        <div class="ml-s"> -</div>
+                                        <div id="selected-database" class="expand-selected ml-s">
+                                            PostgreSQL
+                                        </div>
+                                        <div class="ml-s">Selected</div>
+                                    </div>
+                                    <div>
+                                        <span class="customize">No Need For Database?</span>
+                                        <div class="btn delete-btn ml-s customize">x</div>
+                                        <img width="20" class="ml-s img-inactive"
+                                             src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDI4NC45MjkgMjg0LjkyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjg0LjkyOSAyODQuOTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Mi4wODIsMTk1LjI4NUwxNDkuMDI4LDYyLjI0Yy0xLjkwMS0xLjkwMy00LjA4OC0yLjg1Ni02LjU2Mi0yLjg1NnMtNC42NjUsMC45NTMtNi41NjcsMi44NTZMMi44NTYsMTk1LjI4NSAgIEMwLjk1LDE5Ny4xOTEsMCwxOTkuMzc4LDAsMjAxLjg1M2MwLDIuNDc0LDAuOTUzLDQuNjY0LDIuODU2LDYuNTY2bDE0LjI3MiwxNC4yNzFjMS45MDMsMS45MDMsNC4wOTMsMi44NTQsNi41NjcsMi44NTQgICBjMi40NzQsMCw0LjY2NC0wLjk1MSw2LjU2Ny0yLjg1NGwxMTIuMjA0LTExMi4yMDJsMTEyLjIwOCwxMTIuMjA5YzEuOTAyLDEuOTAzLDQuMDkzLDIuODQ4LDYuNTYzLDIuODQ4ICAgYzIuNDc4LDAsNC42NjgtMC45NTEsNi41Ny0yLjg0OGwxNC4yNzQtMTQuMjc3YzEuOTAyLTEuOTAyLDIuODQ3LTQuMDkzLDIuODQ3LTYuNTY2ICAgQzI4NC45MjksMTk5LjM3OCwyODMuOTg0LDE5Ny4xODgsMjgyLjA4MiwxOTUuMjg1eiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
+                                    </div>
+                                </div>
+                                <div class="detail-config database-config" detail-hide>
+                                    <div class="has-database mt-s">
+                                        <div class="flex-wrp item-center">
+                                            <div class="radio-btn-container">
+                                                <input onchange="G.updateDatabase(this)" type="radio" value="postgresql"
+                                                       name="database" checked/>
+                                                <b class="radio-btn flex-wrp item-center content-center">
+                                                    PostgreSQL
+                                                </b>
+                                            </div>
+                                            <div class="radio-btn-container ml-s">
+                                                <input onchange="G.updateDatabase(this)" type="radio" value="mysql"
+                                                       name="database"/>
+                                                <b class="radio-btn flex-wrp item-center content-center">
+                                                    MySQL
+                                                </b>
+                                            </div>
+                                            <div class="radio-btn-container ml-s">
+                                                <input onchange="G.updateDatabase(this)" type="radio" value="mongodb"
+                                                       name="database"/>
+                                                <b class="radio-btn flex-wrp item-center content-center">
+                                                    MongoDB
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-wrp item-center mt-s has-database customize">
+                                        <div id="db-name" class="mysql postgresql">
+                                            <label class="form-label"><b><span class="hl">*</span>Database Name</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="Specify your database name for connection. Do not contain blanks or special characters.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="db-name-input" class="form-input" type="text"
+                                                       value="doploy"/>
+                                            </div>
+                                        </div>
+                                        <div id="db-user" class="ml-s mysql postgresql">
+                                            <label class="form-label"><b><span class="hl">*</span>Username</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="Specify your database user for connection. Do not contain blanks or special characters.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="db-user-input" class="form-input" type="text"
+                                                       value="test-user"/>
+                                            </div>
+                                        </div>
+                                        <div id="db-pass" class="ml-s mysql postgresql">
+                                            <label class="form-label"><b><span class="hl">*</span>Password</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="Specify your database password for current user. Do not contain blanks or special characters.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="db-password-input" class="form-input" type="text"
+                                                       value="test-password"/>
+                                            </div>
+                                        </div>
+                                        <div id="db-root-pass" class="ml-s mysql">
+                                            <label class="form-label"><b><span class="hl">*</span>Root Password</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="Specify your database password for root user. Do not contain blanks or special characters.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="db-root-pass-input" class="form-input" type="text"
+                                                       value="test-root-password"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-wrp item-center mt-s has-database customize">
+                                        <div id="db-host">
+                                            <label class="form-label"><b><span class="hl">*</span>Database Host</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="The host of your database, cannot use 'localhost', pure numbers, or special characters as the name.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="db-host-input" class="form-input" type="text"
+                                                       value="db"/>
+                                            </div>
+                                        </div>
+                                        <div id="db-port" class="ml-s">
+                                            <label class="form-label"><b>Expose Database Port</b>
+                                                <span class="popup" data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="If you want to expose port for your database, put in the port here(standard port has already been input). Otherwise, if you don't want to expose your port for secure purpose, just clean it and skip it.">
+                                        ?
+                                    </span>
+                                            </label>
+                                            <div>
+                                                <input id="db-port-input" class="form-input" type="number"
+                                                       value="3306"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group mt-s customize">
+                                <div class="flex-wrp item-center content-between">
+                                    <label class="form-label expand"><b>3. Get Doploy Scripts</b></label>
+                                    <button class="btn" type="button" onclick="G.generate(this)">Generate</button>
+                                </div>
+                                <div class="mt-s">
+                                    Generated Doploy scripts must be put under the root directory of your project. Click
+                                    to download. In this way, your project will be empowered with the one-step deploy
+                                    feature.
+                                </div>
+                                <img width="45" height="45" class="mt-s hidden loading"
+                                     src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0OTYgNDk2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OTYgNDk2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPHBhdGggc3R5bGU9ImZpbGw6Izc2RkZFNTsiIGQ9Ik0yNDgsOTJjLTEzLjYsMC0yNC0xMC40LTI0LTI0VjI0YzAtMTMuNiwxMC40LTI0LDI0LTI0czI0LDEwLjQsMjQsMjR2NDRDMjcyLDgwLjgsMjYxLjYsOTIsMjQ4LDkyeiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMERCRkJBOyIgZD0iTTI0OCw0OTZjLTEzLjYsMC0yNC0xMC40LTI0LTI0di00NGMwLTEzLjYsMTAuNC0yNCwyNC0yNHMyNCwxMC40LDI0LDI0djQ0ICBDMjcyLDQ4NS42LDI2MS42LDQ5NiwyNDgsNDk2eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojQkJGRkYyOyIgZD0iTTE1Ny42LDExNmMtOCwwLTE2LTQtMjAuOC0xMmwtMjEuNi0zNy42Yy02LjQtMTEuMi0yLjQtMjYuNCw4LjgtMzIuOHMyNi40LTIuNCwzMi44LDguOEwxNzguNCw4MCAgYzYuNCwxMS4yLDIuNCwyNi40LTguOCwzMi44QzE2Ni40LDExNC40LDE2MS42LDExNiwxNTcuNiwxMTZ6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiMxQkNFQjg7IiBkPSJNMzYwLDQ2NS42Yy04LDAtMTYtNC0yMC44LTEyTDMxNy42LDQxNmMtNi40LTExLjItMi40LTI2LjQsOC44LTMyLjhjMTEuMi02LjQsMjYuNC0yLjQsMzIuOCw4LjggIGwyMS42LDM3LjZjNi40LDExLjIsMi40LDI2LjQtOC44LDMyLjhDMzY4LDQ2NC44LDM2NCw0NjUuNiwzNjAsNDY1LjZ6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiNFMUZGRjk7IiBkPSJNOTIsMTgxLjZjLTQsMC04LTAuOC0xMi0zLjJsLTM3LjYtMjEuNmMtMTEuMi02LjQtMTUuMi0yMS42LTguOC0zMi44czIxLjYtMTUuMiwzMi44LTguOGwzNy42LDIxLjYgIGMxMS4yLDYuNCwxNS4yLDIxLjYsOC44LDMyLjhDMTA4LDE3Ny42LDEwMCwxODEuNiw5MiwxODEuNnoiLz4KPHBhdGggc3R5bGU9ImZpbGw6IzI2REJDMDsiIGQ9Ik00NDIuNCwzODRjLTQsMC04LTAuOC0xMi0zLjJMMzkyLDM1OS4yYy0xMS4yLTYuNC0xNS4yLTIxLjYtOC44LTMyLjhjNi40LTExLjIsMjEuNi0xNS4yLDMyLjgtOC44ICBsMzcuNiwyMS42YzExLjIsNi40LDE1LjIsMjEuNiw4LjgsMzIuOEM0NTguNCwzODAsNDUwLjQsMzg0LDQ0Mi40LDM4NHoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0YzRkZGRDsiIGQ9Ik02OCwyNzJIMjRjLTEzLjYsMC0yNC0xMC40LTI0LTI0czEwLjQtMjQsMjQtMjRoNDRjMTMuNiwwLDI0LDEwLjQsMjQsMjRTODAuOCwyNzIsNjgsMjcyeiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMkVFNUM2OyIgZD0iTTQ3MiwyNzJoLTQ0Yy0xMy42LDAtMjQtMTAuNC0yNC0yNHMxMC40LTI0LDI0LTI0aDQ0YzEzLjYsMCwyNCwxMC40LDI0LDI0UzQ4NS42LDI3Miw0NzIsMjcyeiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojMTFBRUJBOyIgZD0iTTUzLjYsMzg0Yy04LDAtMTYtNC0yMC44LTEyYy02LjQtMTEuMi0yLjQtMjYuNCw4LjgtMzIuOGwzNy42LTIxLjZjMTEuMi02LjQsMjYuNC0yLjQsMzIuOCw4LjggIGM2LjQsMTEuMiwyLjQsMjYuNC04LjgsMzIuOGwtMzcuNiwyMS42QzYyLjQsMzgzLjIsNTguNCwzODQsNTMuNiwzODR6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiMzQkVEQ0I7IiBkPSJNNDA0LDE4MS42Yy04LDAtMTYtNC0yMC44LTEyYy02LjQtMTEuMi0yLjQtMjYuNCw4LjgtMzIuOGwzNy42LTIxLjZjMTEuMi02LjQsMjYuNC0yLjQsMzIuOCw4LjggIHMyLjQsMjYuNC04LjgsMzIuOEw0MTYsMTc4LjRDNDEyLDE4MC44LDQwOCwxODEuNiw0MDQsMTgxLjZ6Ii8+CjxwYXRoIHN0eWxlPSJmaWxsOiMwRkI4QkM7IiBkPSJNMTM2LDQ2NS42Yy00LDAtOC0wLjgtMTItMy4yYy0xMS4yLTYuNC0xNS4yLTIxLjYtOC44LTMyLjhsMjEuNi0zNy42YzYuNC0xMS4yLDIxLjYtMTUuMiwzMi44LTguOCAgYzExLjIsNi40LDE1LjIsMjEuNiw4LjgsMzIuOGwtMjEuNiwzNy42QzE1Miw0NjEuNiwxNDQsNDY1LjYsMTM2LDQ2NS42eiIvPgo8cGF0aCBzdHlsZT0iZmlsbDojNTdGN0Q4OyIgZD0iTTMzOC40LDExNmMtNCwwLTgtMC44LTEyLTMuMmMtMTEuMi02LjQtMTUuMi0yMS42LTguOC0zMi44bDIxLjYtMzcuNmM2LjQtMTEuMiwyMS42LTE1LjIsMzIuOC04LjggIGMxMS4yLDYuNCwxNS4yLDIxLjYsOC44LDMyLjhMMzU5LjIsMTA0QzM1NC40LDExMS4yLDM0Ni40LDExNiwzMzguNCwxMTZ6Ii8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
+                                <div class="mt-s flex-wrp item-center hidden" id="script-list">
+                                    <a class="btn block flex-wrp flex-column item-center"
+                                       href="https://s3-us-west-2.amazonaws.com/alansite/resources/init-script.sh">
+                                        <img width="30"
+                                             src="data:image/svg+xml;base64,
+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGc+PGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDk4Ljk2NiwzMzkuOTQ2Yy03LjE5NywwLTEzLjAzNCw1LjgzNy0xMy4wMzQsMTMuMDM0djQ5LjgwNGMwLDI4Ljc0Ny0yMy4zODgsNTIuMTM1LTUyLjEzNSw1Mi4xMzVINzguMjAzICAgIGMtMjguNzQ3LDAtNTIuMTM1LTIzLjM4OC01Mi4xMzUtNTIuMTM1VjM1Mi45OGMwLTcuMTk3LTUuODM1LTEzLjAzNC0xMy4wMzQtMTMuMDM0QzUuODM1LDMzOS45NDYsMCwzNDUuNzgyLDAsMzUyLjk4djQ5LjgwNCAgICBjMCw0My4xMjEsMzUuMDgyLDc4LjIwMyw3OC4yMDMsNzguMjAzaDM1NS41OTRjNDMuMTIxLDAsNzguMjAzLTM1LjA4Miw3OC4yMDMtNzguMjAzVjM1Mi45OCAgICBDNTEyLDM0NS43ODIsNTA2LjE2NSwzMzkuOTQ2LDQ5OC45NjYsMzM5Ljk0NnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGRkY2RjYiPjwvcGF0aD4KCTwvZz4KPC9nPjxnPgoJPGc+CgkJPHBhdGggZD0iTTQxOS44MzMsMzkxLjNIOTIuMTY3Yy03LjE5NywwLTEzLjAzNCw1LjgzNy0xMy4wMzQsMTMuMDM0czUuODM1LDEzLjAzNCwxMy4wMzQsMTMuMDM0aDMyNy42NjUgICAgYzcuMTk5LDAsMTMuMDM0LTUuODM1LDEzLjAzNC0xMy4wMzRDNDMyLjg2NiwzOTcuMTM3LDQyNy4wMzEsMzkxLjMsNDE5LjgzMywzOTEuM3oiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGRkY2RjYiPjwvcGF0aD4KCTwvZz4KPC9nPjxnPgoJPGc+CgkJPHBhdGggZD0iTTM4Ny45MTksMjA3LjkzYy00Ljc5NS01LjM2Ny0xMy4wMzQtNS44MzQtMTguNDA0LTEuMDM4bC0xMDAuNDgyLDg5Ljc2NVY0NC4wNDhjMC03LjE5Ny01LjgzNS0xMy4wMzQtMTMuMDM0LTEzLjAzNCAgICBjLTcuMTk3LDAtMTMuMDM0LDUuODM1LTEzLjAzNCwxMy4wMzR2MjUyLjYwOWwtMTAwLjQ4Mi04OS43NjRjLTUuMzY3LTQuNzk2LTEzLjYwNy00LjMyOC0xOC40MDQsMS4wMzggICAgYy00Ljc5NCw1LjM2OS00LjMzMSwxMy42MDksMS4wMzcsMTguNDA0bDEwOS4xNzQsOTcuNTI3YzYuMTg3LDUuNTI5LDEzLjk0Niw4LjI5MiwyMS43MDgsOC4yOTIgICAgYzcuNzU5LDAsMTUuNTE5LTIuNzYzLDIxLjcwOC04LjI4OWwxMDkuMTc0LTk3LjUzQzM5Mi4yNSwyMjEuNTM3LDM5Mi43MTQsMjEzLjI5NywzODcuOTE5LDIwNy45M3oiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNGRkY2RjYiPjwvcGF0aD4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+"/>
+                                        <div>init-scripts</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group mt-s template">
+                                <div class="flex-wrp item-center">
+                                    <label class="form-label expand"><b>3. Template Git Project</b></label>
+                                </div>
+                                <div class="mt-s">
+                                    The templates are pre-built with different configurations. You can fork the template
+                                    to create your own git project.
+                                </div>
+                                <div class="mt-s flex-wrp item-center">
+                                    <img alt="github-icon" style="width: 1.35em;height: 1.35em;filter: invert(.7);"
+                                         src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDQzOC41MzYgNDM4LjUzNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDM4LjUzNiA0MzguNTM2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTE1OC4xNzMsMzUyLjU5OWMtMy4wNDksMC41NjgtNC4zODEsMS45OTktMy45OTksNC4yODFjMC4zOCwyLjI4MywyLjA5MywzLjA0Niw1LjEzOCwyLjI4MyAgICBjMy4wNDktMC43Niw0LjM4LTIuMDk1LDMuOTk3LTMuOTk3QzE2Mi45MzEsMzUzLjA3NCwxNjEuMjE4LDM1Mi4yMTYsMTU4LjE3MywzNTIuNTk5eiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik0xNDEuODk4LDM1NC44ODVjLTMuMDQ2LDAtNC41NjgsMS4wNDEtNC41NjgsMy4xMzljMCwyLjQ3NCwxLjYxOSwzLjUxOCw0Ljg1MywzLjEzOGMzLjA0NiwwLDQuNTctMS4wNDcsNC41Ny0zLjEzOCAgICBDMTQ2Ljc1MywzNTUuNTUzLDE0NS4xMzQsMzU0LjUwMiwxNDEuODk4LDM1NC44ODV6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTExOS42MjksMzU0LjAyMmMtMC43NiwyLjA5NSwwLjQ3OCwzLjUxOSwzLjcxMSw0LjI4NGMyLjg1NSwxLjEzNyw0LjY2NCwwLjU2OCw1LjQyNC0xLjcxNCAgICBjMC41NzItMi4wOTEtMC42NjYtMy42MS0zLjcxMS00LjU2OEMxMjIuMTk3LDM1MS4yNjUsMTIwLjM5LDM1MS45MjIsMTE5LjYyOSwzNTQuMDIyeiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik00MTQuNDEsMjQuMTIzQzM5OC4zMjYsOC4wNDIsMzc4Ljk2NCwwLDM1Ni4zMDksMEg4Mi4yMjVDNTkuNTc3LDAsNDAuMjA4LDguMDQyLDI0LjEyMywyNC4xMjMgICAgQzguMDQyLDQwLjIwNywwLDU5LjU3NiwwLDgyLjIyNXYyNzQuMDg4YzAsMjIuNjUsOC4wNDIsNDIuMDE3LDI0LjEyMyw1OC4wOThjMTYuMDg0LDE2LjA4NCwzNS40NTQsMjQuMTI2LDU4LjEwMiwyNC4xMjZoNjMuOTUzICAgIGM0LjE4NCwwLDcuMzI3LTAuMTQ0LDkuNDItMC40MjRjMi4wOTItMC4yODgsNC4xODQtMS41MjYsNi4yNzktMy43MTdjMi4wOTYtMi4xODcsMy4xNC01LjM3NiwzLjE0LTkuNTYyICAgIGMwLTAuNTY4LTAuMDUtNy4wNDYtMC4xNDQtMTkuNDE3Yy0wLjA5Ny0xMi4zNzUtMC4xNDQtMjIuMTc2LTAuMTQ0LTI5LjQxbC02LjU2NywxLjE0M2MtNC4xODcsMC43Ni05LjQ2OSwxLjA5NS0xNS44NDYsMC45OTkgICAgYy02LjM3NC0wLjA5Ni0xMi45OS0wLjc2LTE5Ljg0MS0xLjk5OGMtNi44NTUtMS4yMzktMTMuMjI5LTQuMDkzLTE5LjEzLTguNTYyYy01Ljg5OC00LjQ3Ny0xMC4wODUtMTAuMzI4LTEyLjU2LTE3LjU1OSAgICBsLTIuODU2LTYuNTcxYy0xLjkwMy00LjM3My00Ljg5OS05LjIyOS04Ljk5Mi0xNC41NTRjLTQuMDkzLTUuMzMyLTguMjMyLTguOTQ5LTEyLjQxOS0xMC44NTJsLTEuOTk5LTEuNDI4ICAgIGMtMS4zMzEtMC45NTEtMi41NjgtMi4wOTgtMy43MTEtMy40MjljLTEuMTQxLTEuMzM1LTEuOTk3LTIuNjY5LTIuNTY4LTMuOTk3Yy0wLjU3MS0xLjMzNS0wLjA5Ny0yLjQzLDEuNDI3LTMuMjg5ICAgIGMxLjUyNC0wLjg1NSw0LjI4MS0xLjI3OSw4LjI4LTEuMjc5bDUuNzA4LDAuODU1YzMuODA4LDAuNzYsOC41MTYsMy4wNDIsMTQuMTM0LDYuODUxYzUuNjE0LDMuODA2LDEwLjIyOSw4Ljc1NCwxMy44NDYsMTQuODQzICAgIGM0LjM4LDcuODA2LDkuNjU3LDEzLjc1LDE1Ljg0NiwxNy44NDNjNi4xODQsNC4wOTcsMTIuNDE5LDYuMTQzLDE4LjY5OSw2LjE0M3MxMS43MDQtMC40NzYsMTYuMjc0LTEuNDI0ICAgIGM0LjU2NS0wLjk1NCw4Ljg0OC0yLjM4NSwxMi44NDctNC4yODhjMS43MTMtMTIuNzUxLDYuMzc3LTIyLjU1OSwxMy45ODgtMjkuNDFjLTEwLjg0OC0xLjE0My0yMC42MDItMi44NTQtMjkuMjY1LTUuMTQgICAgYy04LjY1OC0yLjI4Ni0xNy42MDUtNS45OTUtMjYuODM1LTExLjEzNmMtOS4yMzQtNS4xNC0xNi44OTQtMTEuNTEyLTIyLjk4NS0xOS4xM2MtNi4wOS03LjYxOC0xMS4wODgtMTcuNjEtMTQuOTg3LTI5Ljk3OCAgICBjLTMuOTAxLTEyLjM3NS01Ljg1Mi0yNi42NTItNS44NTItNDIuODI5YzAtMjMuMDI5LDcuNTIxLTQyLjYzNywyMi41NTctNTguODE0Yy03LjA0NC0xNy4zMi02LjM3OS0zNi43MzIsMS45OTctNTguMjQyICAgIGM1LjUyLTEuNzE0LDEzLjcwNi0wLjQyOCwyNC41NTQsMy44NTVjMTAuODUsNC4yODYsMTguNzk0LDcuOTUxLDIzLjg0LDEwLjk5MmM1LjA0NiwzLjA0Miw5LjA4OSw1LjYxNCwxMi4xMzUsNy43MSAgICBjMTcuNzA1LTQuOTQ5LDM1Ljk3Ni03LjQyMyw1NC44MTgtNy40MjNjMTguODQxLDAsMzcuMTE1LDIuNDc0LDU0LjgyMSw3LjQyM2wxMC44NDktNi44NTJjNy40MjYtNC41NywxNi4xOC04Ljc1NywyNi4yNjktMTIuNTYyICAgIGMxMC4wODgtMy44MDYsMTcuNzk1LTQuODU0LDIzLjEyNy0zLjE0YzguNTYyLDIxLjUxLDkuMzI4LDQwLjkyMiwyLjI3OSw1OC4yNDFjMTUuMDM2LDE2LjE3OSwyMi41NTksMzUuNzg2LDIyLjU1OSw1OC44MTUgICAgYzAsMTYuMTgtMS45NTEsMzAuNTA1LTUuODUyLDQyLjk2OWMtMy44OTgsMTIuNDY3LTguOTM5LDIyLjQ2My0xNS4xMywyOS45ODFjLTYuMTg0LDcuNTE5LTEzLjg5NCwxMy44NDMtMjMuMTI0LDE4Ljk4NiAgICBjLTkuMjMyLDUuMTM3LTE4LjE3OCw4Ljg1My0yNi44NCwxMS4xMzJjLTguNjYxLDIuMjg2LTE4LjQxNCw0LjAwNC0yOS4yNjMsNS4xNDdjOS44OTEsOC41NjIsMTQuODM5LDIyLjA3MiwxNC44MzksNDAuNTM4djY4LjIzOCAgICBjMCwzLjIzNywwLjQ3Miw1Ljg1MiwxLjQyNCw3Ljg1MWMwLjk1OCwxLjk5OCwyLjQ3OCwzLjM3NCw0LjU3MSw0LjE0MWMyLjEwMiwwLjc2LDMuOTQ5LDEuMjM1LDUuNTcxLDEuNDI0ICAgIGMxLjYyMiwwLjE5MSwzLjk0OSwwLjI4Nyw2Ljk5NSwwLjI4N2g2My45NTNjMjIuNjQ4LDAsNDIuMDE4LTguMDQyLDU4LjA5NS0yNC4xMjZjMTYuMDg0LTE2LjA4NCwyNC4xMjYtMzUuNDU0LDI0LjEyNi01OC4xMDIgICAgVjgyLjIyNUM0MzguNTMzLDU5LjU3Niw0MzAuNDkxLDQwLjIwNCw0MTQuNDEsMjQuMTIzeiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik04Ni43OTMsMzE5LjE5NWMtMS4zMzEsMC45NDgtMS4xNDEsMi40NzEsMC41NzIsNC41NjVjMS45MDYsMS45MDIsMy40MjcsMi4xODksNC41NywwLjg1NSAgICBjMS4zMzEtMC45NDgsMS4xNDEtMi40NzEtMC41NzUtNC41NjlDODkuNDU4LDMxOC4zMzYsODcuOTM2LDMxOC4wNDksODYuNzkzLDMxOS4xOTV6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTc3LjM3NCwzMTIuMDU3Yy0wLjU3LDEuMzM1LDAuMDk2LDIuNDc4LDEuOTk5LDMuNDI2YzEuNTIxLDAuOTU1LDIuNzYyLDAuNzY3LDMuNzExLTAuNTY4ICAgIGMwLjU3LTEuMzM1LTAuMDk2LTIuNDc4LTEuOTk5LTMuNDMzQzc5LjE4MiwzMTAuOTEsNzcuOTQ1LDMxMS4xMDIsNzcuMzc0LDMxMi4wNTd6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTk1LjY0NiwzMzAuMzMxYy0xLjcxNSwwLjk0OC0xLjcxNSwyLjY2NiwwLDUuMTM3YzEuNzEzLDIuNDc4LDMuMzI4LDMuMTQyLDQuODUzLDEuOTk4YzEuNzE0LTEuMzM0LDEuNzE0LTMuMTQyLDAtNS40MjcgICAgQzk4Ljk3OCwzMjkuNTcxLDk3LjM1OSwzMjguOTkzLDk1LjY0NiwzMzAuMzMxeiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik0xMDUuNjQxLDM0My4xNzRjLTEuNzE0LDEuNTI2LTEuMzM2LDMuMzI3LDEuMTQyLDUuNDI4YzIuMjgxLDIuMjc5LDQuMTg1LDIuNTY2LDUuNzA4LDAuODQ5ICAgIGMxLjUyNC0xLjUxOSwxLjE0My0zLjMyNi0xLjE0Mi01LjQyQzEwOS4wNjgsMzQxLjc1MSwxMDcuMTY0LDM0MS40NjMsMTA1LjY0MSwzNDMuMTc0eiIgZmlsbD0iI0ZGRkZGRiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
+                                    <a target="_blank" id="template-url" href="" class="ml-s">
+                                        <b class="framework-type"></b> - <b class="db-type"></b></a>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group mt-m">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-default btn bg-gray res-btn-gray"
+                                            data-class=".res-form-two">Back
+                                    </button>
+                                    <button type="button" class="btn btn-default col-xs-offset-1 res-btn-orange"
+                                            data-class=".res-form-two">Next Step
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="res-step-form res-form-three">
+                        <div class="text-center mt-m title">Configure Your Server</div>
+                        <form class="form-horizontal mt-m">
+                            <div class="form-group">
+                                <label class="form-label"><b><span class="hl">*</span>Operating System</b>
+                                    <span class="popup" data-toggle="tooltip"
+                                          data-placement="top"
+                                          title="Choose the operating system specified on your cloud platform.">?</span>
+                                </label>
+                                <div class="flex-wrp item-center mt-s">
+                                    <div class="radio-btn-container">
+                                        <input onchange="G.updateScript()" type="radio" value="centos" name="os"
+                                               checked/>
+                                        <b class="radio-btn flex-wrp item-center content-center">
+                                            CentOS
+                                        </b>
+                                    </div>
+                                    <div class="radio-btn-container ml-s">
+                                        <input onchange="G.updateScript()" type="radio" value="debian" name="os"/>
+                                        <b class="radio-btn flex-wrp item-center content-center">
+                                            Debian
+                                        </b>
+                                    </div>
+                                    <div class="radio-btn-container ml-s">
+                                        <input onchange="G.updateScript()" type="radio" value="ubuntu" name="os"/>
+                                        <b class="radio-btn flex-wrp item-center content-center">
+                                            Ubuntu
+                                        </b>
+                                    </div>
+                                </div>
+                                <div class="mt-s">
+                                    <label class="form-label"><b><span class="hl">*</span>Project Git Url</b>
+                                        <span class="popup" data-toggle="tooltip"
+                                              data-placement="top"
+                                              title="Your project git url(either forked template or your customized project) is needed in the deployment activation key.">?</span>
+                                    </label>
+                                    <div>
+                                        <input onkeyup="G.updateScript()" id="giturl-input" style="width: 100%;"
+                                               class="form-input" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-m">
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-default btn bg-gray res-btn-gray"
+                                                data-class=".res-form-three">Back
+                                        </button>
+                                        <button type="button" class="btn btn-default col-xs-offset-1 res-btn-orange"
+                                                data-class=".res-form-three">Next Step
+                                        </button>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="res-step-form res-form-four">
+                        <div class="text-center mt-m title">Get Your Activation Key</div>
+                        <div>Your project has already been empowered with an one-step deploy feature.
+                            Copy and paste the one-step deploy script and deploy it into any machine within minutes!
+                        </div>
+                        <form class="form-horizontal mt-m">
+                            <div class="form-group flex-wrp item-center content-between">
+                                <input id="deploy-key" readonly type="text" style="width: 75%;overflow: scroll;"/>
+                                <div class="copy btn">Copy</div>
+                            </div>
+                            <div class="form-group mt-m">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-default btn bg-gray res-btn-gray"
+                                            data-class=".res-form-four">Back
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </section>
+</main>
+<footer>
+    <div>
+        <div class="social-media-container">
+            <a href="https://www.linkedin.com/in/alan-zhufeng-xu/" target="_blank"
+               class="flex-wrp items-center ">
+                <img alt="linkedin-icon"
+                     src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8cmVjdCB5PSIxNjAiIHdpZHRoPSIxMTQuNDk2IiBoZWlnaHQ9IjM1MiIgZmlsbD0iI0ZGRkZGRiIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQyNi4zNjgsMTY0LjEyOGMtMS4yMTYtMC4zODQtMi4zNjgtMC44LTMuNjQ4LTEuMTUyYy0xLjUzNi0wLjM1Mi0zLjA3Mi0wLjY0LTQuNjQtMC44OTYgICAgYy02LjA4LTEuMjE2LTEyLjczNi0yLjA4LTIwLjU0NC0yLjA4Yy02Ni43NTIsMC0xMDkuMDg4LDQ4LjU0NC0xMjMuMDQsNjcuMjk2VjE2MEgxNjB2MzUyaDExNC40OTZWMzIwICAgIGMwLDAsODYuNTI4LTEyMC41MTIsMTIzLjA0LTMyYzAsNzkuMDA4LDAsMjI0LDAsMjI0SDUxMlYyNzQuNDY0QzUxMiwyMjEuMjgsNDc1LjU1MiwxNzYuOTYsNDI2LjM2OCwxNjQuMTI4eiIgZmlsbD0iI0ZGRkZGRiIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPGNpcmNsZSBjeD0iNTYiIGN5PSI1NiIgcj0iNTYiIGZpbGw9IiNGRkZGRkYiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"/>
+            </a>
+            <a href="https://github.com/AlanDelip" target="_blank"
+               class="flex-wrp items-center ml-s">
+                <img alt="github-icon"
+                     src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDQzOC41MzYgNDM4LjUzNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDM4LjUzNiA0MzguNTM2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTE1OC4xNzMsMzUyLjU5OWMtMy4wNDksMC41NjgtNC4zODEsMS45OTktMy45OTksNC4yODFjMC4zOCwyLjI4MywyLjA5MywzLjA0Niw1LjEzOCwyLjI4MyAgICBjMy4wNDktMC43Niw0LjM4LTIuMDk1LDMuOTk3LTMuOTk3QzE2Mi45MzEsMzUzLjA3NCwxNjEuMjE4LDM1Mi4yMTYsMTU4LjE3MywzNTIuNTk5eiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik0xNDEuODk4LDM1NC44ODVjLTMuMDQ2LDAtNC41NjgsMS4wNDEtNC41NjgsMy4xMzljMCwyLjQ3NCwxLjYxOSwzLjUxOCw0Ljg1MywzLjEzOGMzLjA0NiwwLDQuNTctMS4wNDcsNC41Ny0zLjEzOCAgICBDMTQ2Ljc1MywzNTUuNTUzLDE0NS4xMzQsMzU0LjUwMiwxNDEuODk4LDM1NC44ODV6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTExOS42MjksMzU0LjAyMmMtMC43NiwyLjA5NSwwLjQ3OCwzLjUxOSwzLjcxMSw0LjI4NGMyLjg1NSwxLjEzNyw0LjY2NCwwLjU2OCw1LjQyNC0xLjcxNCAgICBjMC41NzItMi4wOTEtMC42NjYtMy42MS0zLjcxMS00LjU2OEMxMjIuMTk3LDM1MS4yNjUsMTIwLjM5LDM1MS45MjIsMTE5LjYyOSwzNTQuMDIyeiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik00MTQuNDEsMjQuMTIzQzM5OC4zMjYsOC4wNDIsMzc4Ljk2NCwwLDM1Ni4zMDksMEg4Mi4yMjVDNTkuNTc3LDAsNDAuMjA4LDguMDQyLDI0LjEyMywyNC4xMjMgICAgQzguMDQyLDQwLjIwNywwLDU5LjU3NiwwLDgyLjIyNXYyNzQuMDg4YzAsMjIuNjUsOC4wNDIsNDIuMDE3LDI0LjEyMyw1OC4wOThjMTYuMDg0LDE2LjA4NCwzNS40NTQsMjQuMTI2LDU4LjEwMiwyNC4xMjZoNjMuOTUzICAgIGM0LjE4NCwwLDcuMzI3LTAuMTQ0LDkuNDItMC40MjRjMi4wOTItMC4yODgsNC4xODQtMS41MjYsNi4yNzktMy43MTdjMi4wOTYtMi4xODcsMy4xNC01LjM3NiwzLjE0LTkuNTYyICAgIGMwLTAuNTY4LTAuMDUtNy4wNDYtMC4xNDQtMTkuNDE3Yy0wLjA5Ny0xMi4zNzUtMC4xNDQtMjIuMTc2LTAuMTQ0LTI5LjQxbC02LjU2NywxLjE0M2MtNC4xODcsMC43Ni05LjQ2OSwxLjA5NS0xNS44NDYsMC45OTkgICAgYy02LjM3NC0wLjA5Ni0xMi45OS0wLjc2LTE5Ljg0MS0xLjk5OGMtNi44NTUtMS4yMzktMTMuMjI5LTQuMDkzLTE5LjEzLTguNTYyYy01Ljg5OC00LjQ3Ny0xMC4wODUtMTAuMzI4LTEyLjU2LTE3LjU1OSAgICBsLTIuODU2LTYuNTcxYy0xLjkwMy00LjM3My00Ljg5OS05LjIyOS04Ljk5Mi0xNC41NTRjLTQuMDkzLTUuMzMyLTguMjMyLTguOTQ5LTEyLjQxOS0xMC44NTJsLTEuOTk5LTEuNDI4ICAgIGMtMS4zMzEtMC45NTEtMi41NjgtMi4wOTgtMy43MTEtMy40MjljLTEuMTQxLTEuMzM1LTEuOTk3LTIuNjY5LTIuNTY4LTMuOTk3Yy0wLjU3MS0xLjMzNS0wLjA5Ny0yLjQzLDEuNDI3LTMuMjg5ICAgIGMxLjUyNC0wLjg1NSw0LjI4MS0xLjI3OSw4LjI4LTEuMjc5bDUuNzA4LDAuODU1YzMuODA4LDAuNzYsOC41MTYsMy4wNDIsMTQuMTM0LDYuODUxYzUuNjE0LDMuODA2LDEwLjIyOSw4Ljc1NCwxMy44NDYsMTQuODQzICAgIGM0LjM4LDcuODA2LDkuNjU3LDEzLjc1LDE1Ljg0NiwxNy44NDNjNi4xODQsNC4wOTcsMTIuNDE5LDYuMTQzLDE4LjY5OSw2LjE0M3MxMS43MDQtMC40NzYsMTYuMjc0LTEuNDI0ICAgIGM0LjU2NS0wLjk1NCw4Ljg0OC0yLjM4NSwxMi44NDctNC4yODhjMS43MTMtMTIuNzUxLDYuMzc3LTIyLjU1OSwxMy45ODgtMjkuNDFjLTEwLjg0OC0xLjE0My0yMC42MDItMi44NTQtMjkuMjY1LTUuMTQgICAgYy04LjY1OC0yLjI4Ni0xNy42MDUtNS45OTUtMjYuODM1LTExLjEzNmMtOS4yMzQtNS4xNC0xNi44OTQtMTEuNTEyLTIyLjk4NS0xOS4xM2MtNi4wOS03LjYxOC0xMS4wODgtMTcuNjEtMTQuOTg3LTI5Ljk3OCAgICBjLTMuOTAxLTEyLjM3NS01Ljg1Mi0yNi42NTItNS44NTItNDIuODI5YzAtMjMuMDI5LDcuNTIxLTQyLjYzNywyMi41NTctNTguODE0Yy03LjA0NC0xNy4zMi02LjM3OS0zNi43MzIsMS45OTctNTguMjQyICAgIGM1LjUyLTEuNzE0LDEzLjcwNi0wLjQyOCwyNC41NTQsMy44NTVjMTAuODUsNC4yODYsMTguNzk0LDcuOTUxLDIzLjg0LDEwLjk5MmM1LjA0NiwzLjA0Miw5LjA4OSw1LjYxNCwxMi4xMzUsNy43MSAgICBjMTcuNzA1LTQuOTQ5LDM1Ljk3Ni03LjQyMyw1NC44MTgtNy40MjNjMTguODQxLDAsMzcuMTE1LDIuNDc0LDU0LjgyMSw3LjQyM2wxMC44NDktNi44NTJjNy40MjYtNC41NywxNi4xOC04Ljc1NywyNi4yNjktMTIuNTYyICAgIGMxMC4wODgtMy44MDYsMTcuNzk1LTQuODU0LDIzLjEyNy0zLjE0YzguNTYyLDIxLjUxLDkuMzI4LDQwLjkyMiwyLjI3OSw1OC4yNDFjMTUuMDM2LDE2LjE3OSwyMi41NTksMzUuNzg2LDIyLjU1OSw1OC44MTUgICAgYzAsMTYuMTgtMS45NTEsMzAuNTA1LTUuODUyLDQyLjk2OWMtMy44OTgsMTIuNDY3LTguOTM5LDIyLjQ2My0xNS4xMywyOS45ODFjLTYuMTg0LDcuNTE5LTEzLjg5NCwxMy44NDMtMjMuMTI0LDE4Ljk4NiAgICBjLTkuMjMyLDUuMTM3LTE4LjE3OCw4Ljg1My0yNi44NCwxMS4xMzJjLTguNjYxLDIuMjg2LTE4LjQxNCw0LjAwNC0yOS4yNjMsNS4xNDdjOS44OTEsOC41NjIsMTQuODM5LDIyLjA3MiwxNC44MzksNDAuNTM4djY4LjIzOCAgICBjMCwzLjIzNywwLjQ3Miw1Ljg1MiwxLjQyNCw3Ljg1MWMwLjk1OCwxLjk5OCwyLjQ3OCwzLjM3NCw0LjU3MSw0LjE0MWMyLjEwMiwwLjc2LDMuOTQ5LDEuMjM1LDUuNTcxLDEuNDI0ICAgIGMxLjYyMiwwLjE5MSwzLjk0OSwwLjI4Nyw2Ljk5NSwwLjI4N2g2My45NTNjMjIuNjQ4LDAsNDIuMDE4LTguMDQyLDU4LjA5NS0yNC4xMjZjMTYuMDg0LTE2LjA4NCwyNC4xMjYtMzUuNDU0LDI0LjEyNi01OC4xMDIgICAgVjgyLjIyNUM0MzguNTMzLDU5LjU3Niw0MzAuNDkxLDQwLjIwNCw0MTQuNDEsMjQuMTIzeiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik04Ni43OTMsMzE5LjE5NWMtMS4zMzEsMC45NDgtMS4xNDEsMi40NzEsMC41NzIsNC41NjVjMS45MDYsMS45MDIsMy40MjcsMi4xODksNC41NywwLjg1NSAgICBjMS4zMzEtMC45NDgsMS4xNDEtMi40NzEtMC41NzUtNC41NjlDODkuNDU4LDMxOC4zMzYsODcuOTM2LDMxOC4wNDksODYuNzkzLDMxOS4xOTV6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTc3LjM3NCwzMTIuMDU3Yy0wLjU3LDEuMzM1LDAuMDk2LDIuNDc4LDEuOTk5LDMuNDI2YzEuNTIxLDAuOTU1LDIuNzYyLDAuNzY3LDMuNzExLTAuNTY4ICAgIGMwLjU3LTEuMzM1LTAuMDk2LTIuNDc4LTEuOTk5LTMuNDMzQzc5LjE4MiwzMTAuOTEsNzcuOTQ1LDMxMS4xMDIsNzcuMzc0LDMxMi4wNTd6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTk1LjY0NiwzMzAuMzMxYy0xLjcxNSwwLjk0OC0xLjcxNSwyLjY2NiwwLDUuMTM3YzEuNzEzLDIuNDc4LDMuMzI4LDMuMTQyLDQuODUzLDEuOTk4YzEuNzE0LTEuMzM0LDEuNzE0LTMuMTQyLDAtNS40MjcgICAgQzk4Ljk3OCwzMjkuNTcxLDk3LjM1OSwzMjguOTkzLDk1LjY0NiwzMzAuMzMxeiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik0xMDUuNjQxLDM0My4xNzRjLTEuNzE0LDEuNTI2LTEuMzM2LDMuMzI3LDEuMTQyLDUuNDI4YzIuMjgxLDIuMjc5LDQuMTg1LDIuNTY2LDUuNzA4LDAuODQ5ICAgIGMxLjUyNC0xLjUxOSwxLjE0My0zLjMyNi0xLjE0Mi01LjQyQzEwOS4wNjgsMzQxLjc1MSwxMDcuMTY0LDM0MS40NjMsMTA1LjY0MSwzNDMuMTc0eiIgZmlsbD0iI0ZGRkZGRiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
+            </a>
+            <a href="mailto:zhufeng.xu@columbia.edu"
+               class="flex-wrp items-center ml-s">
+                <img alt="mail-icon"
+                     src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUxMS42MjYgNTExLjYyNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTExLjYyNiA1MTEuNjI2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQ5LjEwNiwxNzguNzI5YzYuNDcyLDQuNTY3LDI1Ljk4MSwxOC4xMzEsNTguNTI4LDQwLjY4NWMzMi41NDgsMjIuNTU0LDU3LjQ4MiwzOS45Miw3NC44MDMsNTIuMDk5ICAgIGMxLjkwMywxLjMzNSw1Ljk0Niw0LjIzNywxMi4xMzEsOC43MWM2LjE4Niw0LjQ3NiwxMS4zMjYsOC4wOTMsMTUuNDE2LDEwLjg1MmM0LjA5MywyLjc1OCw5LjA0MSw1Ljg1MiwxNC44NDksOS4yNzcgICAgYzUuODA2LDMuNDIyLDExLjI3OSw1Ljk5NiwxNi40MTgsNy43YzUuMTQsMS43MTgsOS44OTgsMi41NjksMTQuMjc1LDIuNTY5aDAuMjg3aDAuMjg4YzQuMzc3LDAsOS4xMzctMC44NTIsMTQuMjc3LTIuNTY5ICAgIGM1LjEzNy0xLjcwNCwxMC42MTUtNC4yODEsMTYuNDE2LTcuN2M1LjgwNC0zLjQyOSwxMC43NTItNi41MiwxNC44NDUtOS4yNzdjNC4wOTMtMi43NTksOS4yMjktNi4zNzYsMTUuNDE3LTEwLjg1MiAgICBjNi4xODQtNC40NzcsMTAuMjMyLTcuMzc1LDEyLjEzNS04LjcxYzE3LjUwOC0xMi4xNzksNjIuMDUxLTQzLjExLDEzMy42MTUtOTIuNzljMTMuODk0LTkuNzAzLDI1LjUwMi0yMS40MTEsMzQuODI3LTM1LjExNiAgICBjOS4zMzItMTMuNjk5LDEzLjk5My0yOC4wNywxMy45OTMtNDMuMTA1YzAtMTIuNTY0LTQuNTIzLTIzLjMxOS0xMy41NjUtMzIuMjY0Yy05LjA0MS04Ljk0Ny0xOS43NDktMTMuNDE4LTMyLjExNy0xMy40MThINDUuNjc5ICAgIGMtMTQuNjU1LDAtMjUuOTMzLDQuOTQ4LTMzLjgzMiwxNC44NDRDMy45NDksNzkuNTYyLDAsOTEuOTM0LDAsMTA2Ljc3OWMwLDExLjk5MSw1LjIzNiwyNC45ODUsMTUuNzAzLDM4Ljk3NCAgICBDMjYuMTY5LDE1OS43NDMsMzcuMzA3LDE3MC43MzYsNDkuMTA2LDE3OC43Mjl6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTQ4My4wNzIsMjA5LjI3NWMtNjIuNDI0LDQyLjI1MS0xMDkuODI0LDc1LjA4Ny0xNDIuMTc3LDk4LjUwMWMtMTAuODQ5LDcuOTkxLTE5LjY1LDE0LjIyOS0yNi40MDksMTguNjk5ICAgIGMtNi43NTksNC40NzMtMTUuNzQ4LDkuMDQxLTI2Ljk4LDEzLjcwMmMtMTEuMjI4LDQuNjY4LTIxLjY5Miw2Ljk5NS0zMS40MDEsNi45OTVoLTAuMjkxaC0wLjI4NyAgICBjLTkuNzA3LDAtMjAuMTc3LTIuMzI3LTMxLjQwNS02Ljk5NWMtMTEuMjI4LTQuNjYxLTIwLjIyMy05LjIyOS0yNi45OC0xMy43MDJjLTYuNzU1LTQuNDctMTUuNTU5LTEwLjcwOC0yNi40MDctMTguNjk5ICAgIGMtMjUuNjk3LTE4Ljg0Mi03Mi45OTUtNTEuNjgtMTQxLjg5Ni05OC41MDFDMTcuOTg3LDIwMi4wNDcsOC4zNzUsMTkzLjc2MiwwLDE4NC40Mzd2MjI2LjY4NWMwLDEyLjU3LDQuNDcxLDIzLjMxOSwxMy40MTgsMzIuMjY1ICAgIGM4Ljk0NSw4Ljk0OSwxOS43MDEsMTMuNDIyLDMyLjI2NCwxMy40MjJoNDIwLjI2NmMxMi41NiwwLDIzLjMxNS00LjQ3MywzMi4yNjEtMTMuNDIyYzguOTQ5LTguOTQ5LDEzLjQxOC0xOS42OTQsMTMuNDE4LTMyLjI2NSAgICBWMTg0LjQzN0M1MDMuNDQxLDE5My41NjksNDkzLjkyNywyMDEuODU0LDQ4My4wNzIsMjA5LjI3NXoiIGZpbGw9IiNGRkZGRkYiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"/>
+            </a>
+            <a href="https://www.facebook.com/zhufeng.xu.7" target="_blank"
+               class="flex-wrp items-center ml-s">
+                <img alt="facebook-icon"
+                     src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDQ4LDBINjRDMjguNzA0LDAsMCwyOC43MDQsMCw2NHYzODRjMCwzNS4yOTYsMjguNzA0LDY0LDY0LDY0aDE5MlYzMzZoLTY0di04MGg2NHYtNjRjMC01My4wMjQsNDIuOTc2LTk2LDk2LTk2aDY0djgwICAgIGgtMzJjLTE3LjY2NCwwLTMyLTEuNjY0LTMyLDE2djY0aDgwbC0zMiw4MGgtNDh2MTc2aDk2YzM1LjI5NiwwLDY0LTI4LjcwNCw2NC02NFY2NEM1MTIsMjguNzA0LDQ4My4yOTYsMCw0NDgsMHoiIGZpbGw9IiNGRkZGRkYiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"/>
+            </a>
+            <a href="https://www.instagram.com/alan.zhufeng/" target="_blank"
+               class="flex-wrp items-center ml-s">
+                <img alt="instagram-icon"
+                     src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzUyLDBIMTYwQzcxLjY0OCwwLDAsNzEuNjQ4LDAsMTYwdjE5MmMwLDg4LjM1Miw3MS42NDgsMTYwLDE2MCwxNjBoMTkyYzg4LjM1MiwwLDE2MC03MS42NDgsMTYwLTE2MFYxNjAgICAgQzUxMiw3MS42NDgsNDQwLjM1MiwwLDM1MiwweiBNNDY0LDM1MmMwLDYxLjc2LTUwLjI0LDExMi0xMTIsMTEySDE2MGMtNjEuNzYsMC0xMTItNTAuMjQtMTEyLTExMlYxNjBDNDgsOTguMjQsOTguMjQsNDgsMTYwLDQ4ICAgIGgxOTJjNjEuNzYsMCwxMTIsNTAuMjQsMTEyLDExMlYzNTJ6IiBmaWxsPSIjRkZGRkZGIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjU2LDEyOGMtNzAuNjg4LDAtMTI4LDU3LjMxMi0xMjgsMTI4czU3LjMxMiwxMjgsMTI4LDEyOHMxMjgtNTcuMzEyLDEyOC0xMjhTMzI2LjY4OCwxMjgsMjU2LDEyOHogTTI1NiwzMzYgICAgYy00NC4wOTYsMC04MC0zNS45MDQtODAtODBjMC00NC4xMjgsMzUuOTA0LTgwLDgwLTgwczgwLDM1Ljg3Miw4MCw4MEMzMzYsMzAwLjA5NiwzMDAuMDk2LDMzNiwyNTYsMzM2eiIgZmlsbD0iI0ZGRkZGRiIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPGNpcmNsZSBjeD0iMzkzLjYiIGN5PSIxMTguNCIgcj0iMTcuMDU2IiBmaWxsPSIjRkZGRkZGIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=="/>
+            </a>
+        </div>
+        <div class="logo mt-s">
+            <a href="https://alan-zhufengxu.com" target="_blank" class="title">Alan's Site</a>
+        </div>
+    </div>
+    <div class="ml-s text-end">
+        <div>362 Riverside Drive, New York, NY</div>
+        <div>©2019, Alan'site. All Rights Reserved</div>
+    </div>
+</footer>
+<script src="index.js"></script>
+</body>
+</html>

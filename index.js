@@ -152,6 +152,7 @@ export function generate(e) {
 	let dbname = $('#db-name-input').val();
 	let dbport = $('#db-port-input').val();
 	let dbrootpass = $('#db-root-pass-input').val();
+	let dbhost = $('#db-host-input').val();
 	let entry = $('#entry-input').val();
 	let port = $('#port-input').val();
 	let dependencies = $('#dependencies-input').val();
@@ -164,6 +165,7 @@ export function generate(e) {
 		dbpassword: checkNotNull(dbpassword),
 		dbname: !nodb ? checkNotNull(dbname) : null,
 		dbport: checkNotNull(dbport),
+		dbhost:checkNotNull(dbhost),
 		dbrootpass: checkNotNull(dbrootpass),
 		entry: checkNotNull(entry),
 		port: checkNotNull(port),
